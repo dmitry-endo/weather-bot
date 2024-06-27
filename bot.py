@@ -3,7 +3,7 @@ import logging
 
 from aiogram import Bot, Dispatcher
 
-from config import BOT_TOKEN
+from config_reader import config
 
 
 async def main():
@@ -12,7 +12,7 @@ async def main():
         format="%(asctime)s - %(levelname)s - %(name)s - %(message)s"
     )
 
-    bot = Bot(BOT_TOKEN)
+    bot = Bot(config.bot_token.get_secret_value())
 
     dp = Dispatcher()
     # dp.include_router(event_monitoring.router)
